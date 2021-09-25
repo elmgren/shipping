@@ -3,7 +3,6 @@ import os
 import sys
 
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 logger = logging.getLogger(__name__)
@@ -26,6 +25,4 @@ def _get_url():
 engine = create_engine(_get_url(), connect_args={"check_same_thread": False})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base
 
