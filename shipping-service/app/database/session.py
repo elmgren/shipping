@@ -22,7 +22,7 @@ def _get_url():
         sys.exit(1)
 
 
-engine = create_engine(_get_url(), connect_args={"check_same_thread": False})
-
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
+def get_session():
+    engine = create_engine(_get_url())
+    session_class = sessionmaker(bind=engine)
+    return session_class()
